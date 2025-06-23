@@ -92,7 +92,7 @@ IMPOSSIBLE isn’t about breaking **laws of physics**, but it breaks all **crack
 
 ---
 
-## 🧠 The Real Victory
+## The Real Victory
 
 We don't chase infinity. We chase **efficiency** and **elegance**.
 
@@ -107,7 +107,7 @@ We don't chase infinity. We chase **efficiency** and **elegance**.
 
 ---
 
-## 🛠️ Join the Revolution
+## Join the Revolution
 
 If you believe:
 
