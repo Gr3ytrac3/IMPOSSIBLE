@@ -1,4 +1,4 @@
-# 🔓 Project IMPOSSIBLE: Breaking the Impossible
+# Project IMPOSSIBLE: Breaking the Impossible
 
 > *"You don't need to outgun entropy — you just need to outthink it."*
 > — RedKernel
@@ -15,7 +15,7 @@ It challenges the assumptions that password cracking must be local, list-based, 
 
 ---
 
-## 📌 Table of Contents
+## Table of Contents
 
 * [Overview](#-overview)
 * [The Philosophy](#-the-philosophy)
@@ -30,7 +30,7 @@ It challenges the assumptions that password cracking must be local, list-based, 
 
 ---
 
-## ⚔️ The Philosophy
+## The Philosophy
 
 > "Some passwords are uncrackable."
 
@@ -43,7 +43,7 @@ Wordlists are dead.
 
 ---
 
-## 🔬 The Truth About Entropy
+## The Truth About Entropy
 
 IMPOSSIBLE admits the truth: truly random 32-character passwords are physically uncrackable due to entropy.
 
@@ -55,7 +55,7 @@ But most real-world passwords:
 
 And those — we crack.
 
-### 🔓 What IMPOSSIBLE Targets:
+### What IMPOSSIBLE Targets:
 
 * All 4–12 character passwords (100% coverage over time)
 * Weak 13–16 character passwords
@@ -64,7 +64,7 @@ And those — we crack.
 
 ---
 
-## ⚙️ The Architecture of Revolution
+## The Architecture of Revolution
 
 | Component                | Description                                             |
 | ------------------------ | ------------------------------------------------------- |
@@ -75,7 +75,7 @@ And those — we crack.
 
 ---
 
-## 💥 Breaking Records, Not Physics
+## Breaking Records, Not Physics
 
 | Password Type      | Status                    |
 | ------------------ | ------------------------- |
@@ -92,7 +92,7 @@ IMPOSSIBLE isn’t about breaking **laws of physics**, but it breaks all **crack
 
 ---
 
-## 🧠 The Real Victory
+## The Real Victory
 
 We don't chase infinity. We chase **efficiency** and **elegance**.
 
@@ -107,37 +107,16 @@ We don't chase infinity. We chase **efficiency** and **elegance**.
 
 ---
 
-## 🛠️ Join the Revolution
 
-If you believe:
-
-* Cracking tools should evolve
-* Wordlists limit discovery
-* Password security needs real testing
-
-Then you’re ready for Project IMPOSSIBLE.
-
-🟢 **Star this repo**
-🛠️ **Fork and contribute**
-📣 **Spread the word**
-
----
-
-## 🔧 Installation *(Coming Soon)*
+## Installation *(Coming Soon)*
 
 > Phase 1 release will include installation instructions for local CLI and web deployment.
 
 ---
 
-## 🚀 Usage *(Coming Soon)*
+## Usage *(Coming Soon)*
 
 > Users will be able to enter a hash, choose a character set + length range, and watch the candidate space get generated and tested live.
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See the `LICENSE` file for more details.
 
 ---
 
