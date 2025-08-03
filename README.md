@@ -16,21 +16,6 @@ It challenges the assumptions that password cracking must be local, list-based, 
 
 ---
 
-## Table of Contents
-
-* [Overview](#-overview)
-* [The Philosophy](#-the-philosophy)
-* [Entropy & Truth](#-the-truth-about-entropy)
-* [Architecture](#-the-architecture-of-revolution)
-* [What It Can Crack](#-breaking-records-not-physics)
-* [The Real Victory](#-the-real-victory)
-* [Join the Revolution](#-join-the-revolution)
-* [Installation](#-installation)
-* [Usage](#-usage)
-* [License](#-license)
-
----
-
 ## The Philosophy
 
 > "Some passwords are uncrackable."
