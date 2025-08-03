@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 # Project IMPOSSIBLE: Breaking the Impossible
-=======
-> ![Process Diagram](https://github.com/Gr3ytrac3/IMPOSSIBLE/blob/850e1a89a40f4a8054f20877324e37300575e0bc/impossible.png)
-# 🔓 Project IMPOSSIBLE: Breaking the Impossible
->>>>>>> main/main
 
 > *"You don't need to outgun entropy — you just need to outthink it."*
 > — RedKernel
@@ -112,10 +107,6 @@ We don't chase infinity. We chase **efficiency** and **elegance**.
 
 ---
 
-<<<<<<< HEAD
-=======
-## Join the Revolution
->>>>>>> main/main
 
 ## Installation *(Coming Soon)*
 
