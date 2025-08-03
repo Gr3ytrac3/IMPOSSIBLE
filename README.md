@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Project IMPOSSIBLE: Breaking the Impossible
-=======
 > ![Process Diagram](https://github.com/Gr3ytrac3/IMPOSSIBLE/blob/850e1a89a40f4a8054f20877324e37300575e0bc/impossible.png)
 # 🔓 Project IMPOSSIBLE: Breaking the Impossible
 >>>>>>> main/main
@@ -111,11 +108,6 @@ We don't chase infinity. We chase **efficiency** and **elegance**.
 > The future isn't brute-force. It's **brute-smart.**
 
 ---
-
-<<<<<<< HEAD
-=======
-## Join the Revolution
->>>>>>> main/main
 
 ## Installation *(Coming Soon)*
 
