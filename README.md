@@ -1,6 +1,5 @@
 > ![Process Diagram](https://github.com/Gr3ytrac3/IMPOSSIBLE/blob/850e1a89a40f4a8054f20877324e37300575e0bc/impossible.png)
 # 🔓 Project IMPOSSIBLE: Breaking the Impossible
->>>>>>> main/main
 
 > *"You don't need to outgun entropy — you just need to outthink it."*
 > — RedKernel
@@ -14,21 +13,6 @@
 **Project IMPOSSIBLE** is not just another password cracker. It’s a revolutionary platform that uses **mathematical logic and stateless generation** to dynamically recreate the entire password keyspace — without wordlists, rainbow tables, or stored dictionaries.
 
 It challenges the assumptions that password cracking must be local, list-based, and storage-heavy. With IMPOSSIBLE, **every password is generated — not stored.**
-
----
-
-## Table of Contents
-
-* [Overview](#-overview)
-* [The Philosophy](#-the-philosophy)
-* [Entropy & Truth](#-the-truth-about-entropy)
-* [Architecture](#-the-architecture-of-revolution)
-* [What It Can Crack](#-breaking-records-not-physics)
-* [The Real Victory](#-the-real-victory)
-* [Join the Revolution](#-join-the-revolution)
-* [Installation](#-installation)
-* [Usage](#-usage)
-* [License](#-license)
 
 ---
 
