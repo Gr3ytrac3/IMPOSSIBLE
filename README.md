@@ -1,4 +1,3 @@
-> ![Process Diagram](https://github.com/Gr3ytrac3/IMPOSSIBLE/blob/850e1a89a40f4a8054f20877324e37300575e0bc/impossible.png)
 # 🔓 Project IMPOSSIBLE: Breaking the Impossible
 >>>>>>> main/main
 
