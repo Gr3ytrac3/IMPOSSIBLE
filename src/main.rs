@@ -1,56 +1,51 @@
-use md5;
 use std::io;
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
 use std::time::Instant;
 
-fn index_to_candidate(mut index: u64, charset: &[u8], length: usize, buf: &mut Vec<u8>) -> String {
-    buf.clear();
-    let base = charset.len() as u64;
-    for _ in 0..length {
-        let pos = (index % base) as usize;
-        buf.push(charset[pos]);
-        index /= base;
-    }
-    buf.reverse();
-    String::from_utf8_lossy(buf).to_string()
-}
+mod helpers;
+use helpers::{index_to_candidate, compare_hash};
 
 fn crack_md5(target: &str, charset: &[u8], min_len: usize, max_len: usize, num_threads: usize) -> Option<String> {
     let found = Arc::new(AtomicBool::new(false));
     let result = Arc::new(Mutex::new(None));
 
-    thread::scope(|s| {
-        for _ in 0..num_threads {
-            let target = target.to_string();
-            let charset = charset.to_vec();
-            let found = found.clone();
-            let result = result.clone();
+    for length in min_len..=max_len {
+        let total: u64 = (charset.len() as u64).pow(length as u32);
+        let chunk = (total + num_threads as u64 - 1) / num_threads as u64; // ceil division
 
-            s.spawn(move || {
-                let mut buf = Vec::with_capacity(max_len);
-                for length in min_len..=max_len {
-                    let total: u64 = (charset.len() as u64).pow(length as u32);
+        thread::scope(|s| {
+            for thread_id in 0..num_threads {
+                let start = thread_id as u64 * chunk;
+                let end = std::cmp::min(start + chunk, total);
 
-                    for i in 0..total {
+                let charset = charset.to_vec();
+                let target = target.to_string();
+                let found = found.clone();
+                let result = result.clone();
+
+                s.spawn(move || {
+                    let mut buf = Vec::with_capacity(length);
+                    for i in start..end {
                         if found.load(Ordering::Relaxed) {
                             return;
                         }
-
                         let candidate = index_to_candidate(i, &charset, length, &mut buf);
-                        let hash = format!("{:x}", md5::compute(candidate.as_bytes()));
-
-                        if hash == target {
+                        if compare_hash(&candidate, &target) {
                             found.store(true, Ordering::Relaxed);
                             *result.lock().unwrap() = Some(candidate);
                             return;
                         }
                     }
-                }
-            });
+                });
+            }
+        });
+
+        if found.load(Ordering::Relaxed) {
+            break; 
         }
-    });
+    }
 
     result.lock().unwrap().clone()
 }
