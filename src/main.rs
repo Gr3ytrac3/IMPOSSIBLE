@@ -5,7 +5,7 @@ use std::thread;
 use std::time::Instant;
 
 mod helpers;
-use helpers::{index_to_candidate, compare_hash};
+use helpers::{index_to_candidate, compare_hash, print_progress};
 
 fn crack_md5(target: &str, charset: &[u8], min_len: usize, max_len: usize, num_threads: usize) -> Option<String> {
     let found = Arc::new(AtomicBool::new(false));
@@ -14,6 +14,7 @@ fn crack_md5(target: &str, charset: &[u8], min_len: usize, max_len: usize, num_t
     for length in min_len..=max_len {
         let total: u64 = (charset.len() as u64).pow(length as u32);
         let chunk = (total + num_threads as u64 - 1) / num_threads as u64; // ceil division
+        let start_time = Instant::now();
 
         thread::scope(|s| {
             for thread_id in 0..num_threads {
@@ -27,15 +28,24 @@ fn crack_md5(target: &str, charset: &[u8], min_len: usize, max_len: usize, num_t
 
                 s.spawn(move || {
                     let mut buf = Vec::with_capacity(length);
+                    let mut last_print = start;
+
                     for i in start..end {
                         if found.load(Ordering::Relaxed) {
                             return;
                         }
+
                         let candidate = index_to_candidate(i, &charset, length, &mut buf);
                         if compare_hash(&candidate, &target) {
                             found.store(true, Ordering::Relaxed);
                             *result.lock().unwrap() = Some(candidate);
                             return;
+                        }
+
+                        // Print progress every 10,000 attempts
+                        if i - last_print >= 10000 {
+                            print_progress(i, total, start_time);
+                            last_print = i;
                         }
                     }
                 });
@@ -43,10 +53,11 @@ fn crack_md5(target: &str, charset: &[u8], min_len: usize, max_len: usize, num_t
         });
 
         if found.load(Ordering::Relaxed) {
-            break; 
+            break;
         }
     }
 
+    println!(); // Move to next line after progress bar
     result.lock().unwrap().clone()
 }
 
