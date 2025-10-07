@@ -1,5 +1,11 @@
-use std::time::{Instant};
+use std::time::Instant;
 use std::io::{self, Write};
+use md5::{Digest, Md5};
+use sha1::Sha1;
+use sha2::Sha256;
+use bcrypt::verify;
+use hex;
+use super::HashType;
 
 pub fn index_to_candidate(mut index: u64, charset: &[u8], length: usize, buf: &mut Vec<u8>) -> String {
     buf.clear();
@@ -9,16 +15,36 @@ pub fn index_to_candidate(mut index: u64, charset: &[u8], length: usize, buf: &m
         buf.push(charset[pos]);
         index /= base;
     }
-    buf.reverse();
+    // Removed buf.reverse() for standard base-N conversion
     String::from_utf8_lossy(buf).to_string()
 }
 
-pub fn compare_hash(candidate: &str, target: &str) -> bool {
-    let hash_bytes = md5::compute(candidate.as_bytes());
-    format!("{:x}", hash_bytes) == target
+pub fn compare_hash(candidate: &str, target: &str, hash_type: HashType) -> bool {
+    match hash_type {
+        HashType::Md5 => {
+            let mut hasher = Md5::new();
+            hasher.update(candidate.as_bytes());
+            let result = hasher.finalize();
+            hex::encode(result) == target.to_lowercase()
+        }
+        HashType::Sha1 => {
+            let mut hasher = Sha1::new();
+            hasher.update(candidate.as_bytes());
+            let result = hasher.finalize();
+            hex::encode(result) == target.to_lowercase()
+        }
+        HashType::Sha256 => {
+            let mut hasher = Sha256::new();
+            hasher.update(candidate.as_bytes());
+            let result = hasher.finalize();
+            hex::encode(result) == target.to_lowercase()
+        }
+        HashType::Bcrypt => {
+            verify(candidate, target).unwrap_or(false)
+        }
+    }
 }
 
-// Progress tracker
 pub fn print_progress(current: u64, total: u64, start: Instant) {
     let percentage = (current as f64 / total as f64) * 100.0;
     let elapsed = start.elapsed().as_secs_f64();
